@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import type { Category } from '@/interfaces/category.interface';
+import { useBookmarkStore } from '@/stores/bookmark.store';
 import { useCategoriesStore } from '@/stores/categories.store';
 import { ref, watch } from 'vue';
-import { onBeforeRouteUpdate, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const state = useCategoriesStore();
+const categoryStore = useCategoriesStore();
+const bookmarkStore = useBookmarkStore();
 const category = ref<Category>();
 
 watch(
-  () => state.categories,
-  () => {
-    category.value = state.getCategoryByAlias(route.params.alias);
+  () => categoryStore.categories,
+  (data) => {
+    category.value = categoryStore.getCategoryByAlias(route.params.alias);
+    if (category.value) {
+      bookmarkStore.fetchBookmarks(category.value.id);
+    }
   },
 );
-
-onBeforeRouteUpdate((to) => {
-  category.value = state.getCategoryByAlias(to.params.alias);
-});
 </script>
 
 <template>
   <h1>{{ category?.name }}</h1>
+  {{ bookmarkStore.bookmarks.length }}
 </template>
 
 <style scoped></style>
