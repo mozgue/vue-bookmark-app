@@ -8,7 +8,8 @@
 
 - Vite + Vue 3 Composition API
 - TypeScript
-- Pinia (stat management) \*
+- Pinia (state management)
+- Axios (http-клиент)
 - Router (SPA development) \*
 - ESLint (error prevention)
 - Prettier (code formatting)
