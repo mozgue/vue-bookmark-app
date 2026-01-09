@@ -1,4 +1,4 @@
-import { API_ROUTES, http } from '@/api';
+import { API_ROUTES, client } from '@/api';
 import type { LoginResponse } from '@/interfaces/auth.interface';
 
 import { defineStore } from 'pinia';
@@ -27,7 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
   const getToken = computed(() => token.value);
 
   const login = async (email: string, password: string) => {
-    const { data } = await http.post<LoginResponse>(API_ROUTES.auth.login, {
+    const { data } = await client().post<LoginResponse>(API_ROUTES.auth.login, {
       email,
       password,
     });
