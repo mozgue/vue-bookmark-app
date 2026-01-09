@@ -2,17 +2,37 @@ import { API_ROUTES, http } from '@/api';
 import type { LoginResponse } from '@/interfaces/auth.interface';
 
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+
+const TOKEN_STORE_KEY = 'token-store';
 
 export const useAuthStore = defineStore('auth', () => {
   const token = ref<string>();
+
+  const initialValue = localStorage.getItem(TOKEN_STORE_KEY);
+  if (initialValue) {
+    token.value = initialValue;
+  }
+
+  const clearToken = () => {
+    token.value = undefined;
+    localStorage.removeItem(TOKEN_STORE_KEY);
+  };
+
+  const setToken = (newToken: string) => {
+    token.value = newToken;
+    localStorage.setItem(TOKEN_STORE_KEY, newToken);
+  };
+
+  const getToken = computed(() => token.value);
 
   const login = async (email: string, password: string) => {
     const { data } = await http.post<LoginResponse>(API_ROUTES.auth.login, {
       email,
       password,
     });
-    token.value = data.token;
+    setToken(data.token);
   };
-  return { token, login };
+
+  return { getToken, login, setToken, clearToken };
 });

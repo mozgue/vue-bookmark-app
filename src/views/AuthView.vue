@@ -29,7 +29,7 @@ function onSubmit(event: Event) {
         <ButtonText type="submit">Вход</ButtonText>
       </form>
     </div>
-    {{ authStore.token }}
+    {{ authStore.getToken }}
   </main>
 </template>
 
