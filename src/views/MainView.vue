@@ -2,13 +2,28 @@
 import ButtonIcon from '@/components/ButtonIcon.vue';
 import CategoryList from '@/components/CategoryList.vue';
 import ProfileAvatar from '@/components/ProfileAvatar.vue';
+import IconLogout from '@/icons/IconLogout.vue';
+import { useAuthStore } from '@/stores/auth.store';
 import { useCategoriesStore } from '@/stores/categories.store';
+import { useRouter } from 'vue-router';
 const store = useCategoriesStore();
+const authStore = useAuthStore();
+const router = useRouter();
+
+const logout = () => {
+  authStore.clearToken();
+  router.push({ name: 'auth' });
+};
 </script>
 
 <template>
   <div class="app">
     <aside class="aside">
+      <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 20px;">
+        <ButtonIcon @click="logout">
+          <IconLogout size="16" />
+        </ButtonIcon>
+      </div>
       <nav>
         <ProfileAvatar />
         <CategoryList />
