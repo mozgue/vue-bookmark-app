@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import ButtonIcon from '@/components/ButtonIcon.vue';
 import CategoryList from '@/components/CategoryList.vue';
 import ProfileAvatar from '@/components/ProfileAvatar.vue';
+import { useCategoriesStore } from '@/stores/categories.store';
+const store = useCategoriesStore();
 </script>
 
 <template>
@@ -9,6 +12,7 @@ import ProfileAvatar from '@/components/ProfileAvatar.vue';
       <nav>
         <ProfileAvatar />
         <CategoryList />
+        <ButtonIcon @click="store.createCategory()" icon="plus">+</ButtonIcon>
       </nav>
     </aside>
     <main>

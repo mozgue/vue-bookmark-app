@@ -10,7 +10,9 @@ onMounted(() => store.getCategories());
 <template>
   <ul class="category-list">
     <li v-for="item in store.categories" :key="item.id" class="list-item">
-      <RouterLink :to="`/main/${item.alias}`">{{ item.name }}</RouterLink>
+      <RouterLink active-class="active-link" :to="`/main/${item.alias}`">{{
+        item.name
+      }}</RouterLink>
     </li>
   </ul>
 </template>
@@ -35,6 +37,8 @@ onMounted(() => store.getCategories());
   color: var(--color-fg);
   transition: all 0.5s;
 }
+
+.list-item a.active-link,
 .list-item a:hover {
   color: #000;
   font-weight: bold;

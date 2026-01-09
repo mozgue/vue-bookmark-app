@@ -14,11 +14,12 @@ const { size = 32 } = defineProps<{ size?: number }>();
   align-items: center;
   justify-content: center;
   background: var(--color-fg);
+  color: var(--color-bg);
   cursor: pointer;
   border-radius: 50px;
   border: none;
 }
 .button-icon:hover {
-  background: var(--color-fg-hover);
+  opacity: 0.8;
 }
 </style>
