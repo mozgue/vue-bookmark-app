@@ -9,10 +9,11 @@ const authStore = useAuthStore();
 
 function onSubmit(event: Event) {
   event.preventDefault();
-  console.log(event);
+
   if (!form.value.email || !form.value.password) {
     return;
   }
+
   authStore.login(form.value.email, form.value.password);
   form.value = {};
 }
@@ -26,9 +27,9 @@ function onSubmit(event: Event) {
         <InputText v-model="form.email" placeholder="Эл. Почта" />
         <InputText v-model="form.password" placeholder="Пароль" type="password" />
         <ButtonText type="submit">Вход</ButtonText>
-        {{ authStore.token }}
       </form>
     </div>
+    {{ authStore.token }}
   </main>
 </template>
 
