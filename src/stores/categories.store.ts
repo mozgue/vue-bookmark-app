@@ -18,5 +18,14 @@ export const useCategoriesStore = defineStore('categories', () => {
     });
     categories.value.push(data);
   };
-  return { categories, getCategories, createCategory };
+
+  const getCategoryByAlias = (alias: string | string[]): Category | undefined => {
+    if (typeof alias == 'string') {
+      return categories.value.find((category) => category.alias === alias);
+    }
+
+    return;
+  };
+
+  return { categories, getCategories, createCategory, getCategoryByAlias };
 });

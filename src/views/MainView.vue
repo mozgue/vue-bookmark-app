@@ -31,6 +31,6 @@ const store = useCategoriesStore();
   margin: 140px auto 0;
 }
 .aside {
-  min-width: 400px;
+  min-width: 200px;
 }
 </style>
