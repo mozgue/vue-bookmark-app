@@ -1,27 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import TestComp from './components/TestComp.vue';
-import TestComp2 from './components/TestComp2.vue';
-import AuthView from './views/AuthView.vue';
-import MainView from './views/MainView.vue';
 
 export const router = createRouter({
   routes: [
     {
       path: '/',
-      component: AuthView,
+      component: () => import('./views/AuthView.vue'),
     },
     {
       path: '/main',
-      component: MainView,
+      component: () => import('./views/MainView.vue'),
       children: [
         {
           path: '',
-          component: TestComp,
+          component: () => import('./components/TestComp.vue'),
           name: 'main',
         },
         {
           path: 'development',
-          component: TestComp2,
+          component: () => import('./components/TestComp2.vue'),
         },
       ],
     },
