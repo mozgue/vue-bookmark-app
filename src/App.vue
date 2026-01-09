@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import ProfileAvatar from './components/ProfileAvatar.vue';
-import { useProfileStore } from './stores/profile.store';
-import TestProfile from './components/TestProfile.vue';
-
-const store = useProfileStore();
-
-onMounted(() => store.getProfile());
 </script>
 
 <template>
   <div class="app">
     <aside class="aside">
       <nav>
-        <ProfileAvatar v-if="store.profile" :name="store.profile.name" />
+        <ProfileAvatar />
       </nav>
     </aside>
-    <main>
-      Контент
-      <TestProfile />
-    </main>
+    <main>Контент</main>
   </div>
   <header></header>
 </template>
