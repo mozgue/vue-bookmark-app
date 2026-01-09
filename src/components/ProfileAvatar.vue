@@ -20,8 +20,9 @@ onMounted(() => store.getProfile());
 .profile-avatar {
   display: flex;
   flex-direction: column;
-  /* gap: 12px */
-  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  margin-bottom: 40px;
 }
 .profile-avatar__image {
   width: 80px;

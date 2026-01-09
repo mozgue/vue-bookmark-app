@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CategoryList from './components/CategoryList.vue';
 import ProfileAvatar from './components/ProfileAvatar.vue';
 </script>
 
@@ -7,6 +8,7 @@ import ProfileAvatar from './components/ProfileAvatar.vue';
     <aside class="aside">
       <nav>
         <ProfileAvatar />
+        <CategoryList />
       </nav>
     </aside>
     <main>Контент</main>
