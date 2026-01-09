@@ -19,7 +19,7 @@ const { name } = defineProps<{ name: string }>()
 .profile-avatar {
   display: flex;
   flex-direction: column;
-  /* gap: 12px; */
+  /* gap: 12px */
   align-items: center;
 }
 .profile-avatar__image {
