@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BookmarkCard from '@/components/BookmarkCard.vue';
+import BookmarkSort from '@/components/BookmarkSort.vue';
 import CategoryHeader from '@/components/CategoryHeader.vue';
 import type { Category } from '@/interfaces/category.interface';
 import { useBookmarkStore } from '@/stores/bookmark.store';
@@ -12,12 +13,19 @@ const categoryStore = useCategoryStore();
 const bookmarkStore = useBookmarkStore();
 const category = ref<Category>();
 
+function sortBookmarks(sort: string) {
+  bookmarkStore.activeSort = sort;
+  if (category.value) {
+    bookmarkStore.fetchBookmarks(category.value.id, bookmarkStore.activeSort);
+  }
+}
+
 onMounted(() => {
   if (route.params?.alias) {
     category.value = categoryStore.getCategoryByAlias(route.params.alias);
   }
   if (category.value) {
-    bookmarkStore.fetchBookmarks(category.value.id);
+    bookmarkStore.fetchBookmarks(category.value.id, bookmarkStore.activeSort);
   }
 });
 watch(
@@ -27,7 +35,7 @@ watch(
       category.value = categoryStore.getCategoryByAlias(route.params.alias);
     }
     if (category.value) {
-      bookmarkStore.fetchBookmarks(category.value.id);
+      bookmarkStore.fetchBookmarks(category.value.id, bookmarkStore.activeSort);
     }
   },
 );
@@ -35,14 +43,22 @@ watch(
 
 <template>
   <CategoryHeader v-if="category" :category="category" />
-  <BookmarkCard
-    :id="1"
-    image="/public/avatar.jpg"
-    title="Free, high quality, open source icon library with over 2,000 icons."
-    url="https://ya.ru"
-    category_id="1"
-    :created_at="new Date()"
-  />
+  <div class="sort-list">
+    <BookmarkSort :option="bookmarkStore.activeSort" @sort="sortBookmarks" />
+  </div>
+  <div class="category-list">
+    <BookmarkCard v-for="item in bookmarkStore.bookmarks" :key="item.id" v-bind="item" />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.sort-list {
+  margin-top: 30px;
+}
+.category-list {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+</style>
