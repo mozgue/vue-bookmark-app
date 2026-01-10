@@ -19,9 +19,9 @@ const logout = () => {
 <template>
   <div class="app">
     <aside class="aside">
-      <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 20px;">
+      <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 20px">
         <ButtonIcon @click="logout">
-          <IconLogout size="16" />
+          <IconLogout />
         </ButtonIcon>
       </div>
       <nav>
@@ -30,7 +30,7 @@ const logout = () => {
         <ButtonIcon @click="store.createCategory()" icon="plus">+</ButtonIcon>
       </nav>
     </aside>
-    <main>
+    <main class="main">
       <RouterView />
     </main>
   </div>
@@ -47,5 +47,8 @@ const logout = () => {
 }
 .aside {
   min-width: 200px;
+}
+.main {
+  width: 100%;
 }
 </style>
