@@ -2,12 +2,12 @@
 import CategoryHeader from '@/components/CategoryHeader.vue';
 import type { Category } from '@/interfaces/category.interface';
 import { useBookmarkStore } from '@/stores/bookmark.store';
-import { useCategoriesStore } from '@/stores/categories.store';
+import { useCategoryStore } from '@/stores/categories.store';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const categoryStore = useCategoriesStore();
+const categoryStore = useCategoryStore();
 const bookmarkStore = useBookmarkStore();
 const category = ref<Category>();
 

@@ -4,9 +4,9 @@ import CategoryList from '@/components/CategoryList.vue';
 import ProfileAvatar from '@/components/ProfileAvatar.vue';
 import IconLogout from '@/icons/IconLogout.vue';
 import { useAuthStore } from '@/stores/auth.store';
-import { useCategoriesStore } from '@/stores/categories.store';
+import { useCategoryStore } from '@/stores/categories.store';
 import { useRouter } from 'vue-router';
-const store = useCategoriesStore();
+const store = useCategoryStore();
 const authStore = useAuthStore();
 const router = useRouter();
 

@@ -4,7 +4,7 @@ import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
 import { ref } from 'vue';
 
-export const useCategoriesStore = defineStore('categories', () => {
+export const useCategoryStore = defineStore('categories', () => {
   const categories = ref<Category[]>([]);
   const getCategories = async () => {
     const { data } = await client().get<Category[]>(API_ROUTES.categories);
@@ -27,6 +27,11 @@ export const useCategoriesStore = defineStore('categories', () => {
     getCategories();
   };
 
+  const deleteCategory = async (id: number) => {
+    await client().delete<Category>(API_ROUTES.categories + '/' + id);
+    getCategories();
+  };
+
   const getCategoryByAlias = (alias: string | string[]): Category | undefined => {
     if (typeof alias == 'string') {
       return categories.value.find((category) => category.alias === alias);
@@ -35,5 +40,12 @@ export const useCategoriesStore = defineStore('categories', () => {
     return;
   };
 
-  return { categories, getCategories, createCategory, updateCategory, getCategoryByAlias };
+  return {
+    categories,
+    getCategories,
+    createCategory,
+    updateCategory,
+    deleteCategory,
+    getCategoryByAlias,
+  };
 });

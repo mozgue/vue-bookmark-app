@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useCategoriesStore } from '@/stores/categories.store';
+import { useCategoryStore } from '@/stores/categories.store';
 import { onMounted } from 'vue';
 
-const store = useCategoriesStore();
+const store = useCategoryStore();
 
 onMounted(() => store.getCategories());
 </script>
