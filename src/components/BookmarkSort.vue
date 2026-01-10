@@ -3,7 +3,7 @@ const { option } = defineProps<{ option: string }>();
 
 const SORT_OPTIONS = [
   { option: 'date', label: 'По дате' },
-  { option: 'name', label: 'По названию' },
+  { option: 'title', label: 'По названию' },
 ];
 
 const emit = defineEmits<{
