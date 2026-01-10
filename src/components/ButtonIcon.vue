@@ -16,7 +16,7 @@ const { size = 32 } = defineProps<{ size?: number }>();
   background: var(--color-fg);
   color: var(--color-bg);
   cursor: pointer;
-  border-radius: 50px;
+  border-radius: 50%;
   border: none;
 }
 .button-icon:hover {

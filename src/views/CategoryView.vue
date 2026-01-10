@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BookmarkCard from '@/components/BookmarkCard.vue';
 import CategoryHeader from '@/components/CategoryHeader.vue';
 import type { Category } from '@/interfaces/category.interface';
 import { useBookmarkStore } from '@/stores/bookmark.store';
@@ -34,6 +35,14 @@ watch(
 
 <template>
   <CategoryHeader v-if="category" :category="category" />
+  <BookmarkCard
+    :id="1"
+    image="/public/avatar.jpg"
+    title="Free, high quality, open source icon library with over 2,000 icons."
+    url="https://ya.ru"
+    category_id="1"
+    :created_at="new Date()"
+  />
 </template>
 
 <style scoped></style>
