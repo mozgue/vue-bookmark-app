@@ -4,7 +4,7 @@ import IconPlusBig from '@/icons/IconPlusBig.vue';
 import { useBookmarkStore } from '@/stores/bookmark.store';
 import { ref } from 'vue';
 import ButtonIcon from './ButtonIcon.vue';
-import InputText from './InputText.vue';
+import InputString from './InputString.vue';
 
 const { category_id } = defineProps<{ category_id: number }>();
 const isEdited = ref<boolean>(false);
@@ -30,7 +30,7 @@ const addBookmark = () => {
       <IconPlusBig />
     </ButtonIcon>
     <div v-else class="bookmar-add_edit">
-      <InputText v-model="newUrl" />
+      <InputString v-model="newUrl" is-focused />
       <ButtonIcon @click="addBookmark">
         <IconOk />
       </ButtonIcon>

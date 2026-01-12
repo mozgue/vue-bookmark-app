@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ButtonText from '@/components/ButtonText.vue';
-import InputText from '@/components/InputText.vue';
+import InputAuth from '@/components/InputAuth.vue';
 import { useAuthStore } from '@/stores/auth.store';
 import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
@@ -34,8 +34,8 @@ function onSubmit(event: Event) {
     <div class="auth__form_wrapper">
       <h1 class="auth__header">Bookmark App</h1>
       <form class="auth__form" @submit="onSubmit">
-        <InputText v-model="form.email" placeholder="Эл. Почта" />
-        <InputText v-model="form.password" placeholder="Пароль" type="password" />
+        <InputAuth v-model="form.email" placeholder="Эл. Почта" />
+        <InputAuth v-model="form.password" placeholder="Пароль" type="password" />
         <ButtonText type="submit">Вход</ButtonText>
       </form>
     </div>

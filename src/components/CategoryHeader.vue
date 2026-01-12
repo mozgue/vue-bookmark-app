@@ -7,7 +7,7 @@ import { useCategoryStore } from '@/stores/categories.store';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ButtonIcon from './ButtonIcon.vue';
-import InputText from './InputText.vue';
+import InputString from './InputString.vue';
 
 const { category } = defineProps<{ category: Category }>();
 const isEdited = ref<boolean>(false);
@@ -38,7 +38,7 @@ function deleteCategory() {
   <div class="category-header">
     <h1 v-if="!isEdited">{{ category.name }}</h1>
     <div v-if="isEdited" class="category-header__edit">
-      <InputText v-model="newCategoryName" />
+      <InputString v-model="newCategoryName" />
       <ButtonIcon @click="updateCategory">
         <IconOk />
       </ButtonIcon>
