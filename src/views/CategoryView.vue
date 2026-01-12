@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BookmarkAdd from '@/components/BookmarkAdd.vue';
 import BookmarkCard from '@/components/BookmarkCard.vue';
 import BookmarkSort from '@/components/BookmarkSort.vue';
 import CategoryHeader from '@/components/CategoryHeader.vue';
@@ -48,6 +49,7 @@ watch(
   </div>
   <div class="category-list">
     <BookmarkCard v-for="item in bookmarkStore.bookmarks" :key="item.id" v-bind="item" />
+    <BookmarkAdd />
   </div>
 </template>
 
