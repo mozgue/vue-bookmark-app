@@ -61,5 +61,6 @@ function deleteBookmark(id: number, category_id: number) {
 .bookmark-card__footer {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 }
 </style>

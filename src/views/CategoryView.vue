@@ -49,7 +49,7 @@ watch(
   </div>
   <div class="category-list">
     <BookmarkCard v-for="item in bookmarkStore.bookmarks" :key="item.id" v-bind="item" />
-    <BookmarkAdd />
+    <BookmarkAdd v-if="category" :category_id="category.id" />
   </div>
 </template>
 
@@ -61,6 +61,7 @@ watch(
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(10, 350px);
   gap: 24px;
 }
 </style>
